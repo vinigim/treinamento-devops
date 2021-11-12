@@ -3,6 +3,5 @@ provider "aws" {
 }
 
 module "criar_instancia" {
-  source = "./instancia"
-  nome = "Um nome"
+  source = "git@github.com:vinigim/gitisolado.git"
 }
