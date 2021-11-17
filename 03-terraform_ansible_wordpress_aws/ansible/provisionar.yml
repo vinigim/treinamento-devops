@@ -69,7 +69,6 @@
         name: mysql
         state: started
 
-<<<<<<< HEAD
     # - name: "Criando senha root mysql"
     #   become: yes
     #   mysql_user:
@@ -84,22 +83,6 @@
     #     login_user: root
     #     login_password: root
     #     state: present
-=======
-    - name: "Criando senha root mysql"
-      become: yes
-      mysql_user:
-        name: root
-        host: localhost
-        password: root
-        priv: "*.*:ALL,GRANT"
-  
-    - name: "Cria o banco de dados MySQL"
-      mysql_db:
-        name: banco_wordpress
-        login_user: root
-        login_password: root
-        state: present
->>>>>>> ccb2fe85ec0b45127922c8e264a0a31d71f77830
 
     - name: "Copiando novo tema WP"
       copy:

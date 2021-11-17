@@ -72,7 +72,6 @@
 provider "aws" {
   region = "sa-east-1"
 }
-<<<<<<< HEAD
 
 resource "aws_instance" "web" {
   subnet_id     = "subnet-048155f5678ed3564"
@@ -80,18 +79,11 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   key_name = "chave_key_vini_01"
   associate_public_ip_address = true
-=======
-resource "aws_instance" "web" {
-  subnet_id     = "subnet-05d2f48a5e97f0b1a"
-  ami= "ami-054a31f1b3bf90920"
-  instance_type = "t2.micro"
->>>>>>> ccb2fe85ec0b45127922c8e264a0a31d71f77830
   root_block_device {
     encrypted = true
     volume_size = 8
   }
   tags = {
-<<<<<<< HEAD
     Name = "ec2-vinicius-tf"
   }
 }
@@ -111,9 +103,4 @@ output "instance_public_dns" {
   ]
   description = "Mostra o DNS e os IPs publicos e privados da maquina criada."
 }
-=======
-    Name = "ec2-zerati-tf"
-  }
-}
->>>>>>> ccb2fe85ec0b45127922c8e264a0a31d71f77830
 # /////

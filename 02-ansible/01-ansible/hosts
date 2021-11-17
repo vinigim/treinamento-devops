@@ -1,6 +1,2 @@
 [ec2-ansible-test]
-<<<<<<< HEAD
-ec2-18-230-60-116.sa-east-1.compute.amazonaws.com
-=======
-ec2-54-147-9-247.compute-1.amazonaws.com
->>>>>>> ccb2fe85ec0b45127922c8e264a0a31d71f77830
+ec2-18-230-58-12.sa-east-1.compute.amazonaws.com

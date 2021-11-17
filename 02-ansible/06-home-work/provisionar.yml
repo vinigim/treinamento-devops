@@ -1,0 +1,70 @@
+- hosts: all
+  handlers:
+    - name: "restart nginx"
+      service:
+        name: nginx
+        state: restarted
+      become: yes
+  tasks:
+    - name: "Roda: sudo apt-get update"
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #Um dia
+
+    - name: "Instala pacotes"
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes # roda com sudo
+      with_items:
+        - nginx
+        - unzip
+
+    - name: "Fazendo downlaod do theme"
+      get_url:
+        url: "https://github.com/startbootstrap/startbootstrap-freelancer/archive/gh-pages.zip"
+        dest: "/tmp/gh-pages.zip"
+    
+    - name: "Fazendo descompactação dos arquivos theme"
+      unarchive:
+        src: "/tmp/gh-pages.zip"
+        dest: "/home/ubuntu/"
+        remote_src: yes
+      become: yes
+    
+    # - name: "apaga a pasta html da pasta www"
+    #   become: yes
+    #   file:
+    #     state: absent
+    #     path: /var/www/html/
+
+    # - name: "renomeia a pasta descompactada para html"
+    #   commad: mv /var/www/startbootstrap-freelancer-gh-pages /var/www/html
+    #   become: yes
+
+    - name: "Copia o site"
+      copy:
+        src: "/home/ubuntu/startbootstrap-freelancer-gh-pages"
+        dest: "/var/www/site"
+        remote_src: yes
+      become: yes
+
+    - name: Enable new site
+      become: yes
+      copy:
+        src: nginx/default
+        dest: /etc/nginx/sites-available/default
+      notify: "restart nginx"
+
+    # - name: "Trocando nginx para ler html"
+    #   copy:
+    #     src: "/var/www/site/startbootstrap-freelancer-gh-pages/index.html"
+    #     dest: "/etc/nginx/sites-available/default"
+    #     remote_src: yes
+    #   become: yes
+    #   notify:
+    #     - "restart nginx"
+
+   
