@@ -7,11 +7,20 @@ data "http" "myip" {
 }
 
 resource "aws_instance" "maquina_nginx" {
-  ami           = "ami-09e67e426f25ce0d7"
-  instance_type = "t2.micro"
-  key_name      = "treinamento-turma1_itau"
+  subnet_id     = "subnet-048155f5678ed3564"
+  ami           = "ami-07c267c1d2395046a"
+  key_name = "chave_key_vini_06"
+  instance_type = "t3.medium"
+  associate_public_ip_address = true
+  root_block_device {
+    encrypted = true
+    volume_size = 110
+  }
+  # ami           = "ami-09e67e426f25ce0d7"
+  # instance_type = "t2.micro"
+  # key_name      = "treinamento-turma1_itau"
   tags = {
-    Name = "maquina_ansible_com_nginx"
+    Name = "vini_maquina_ansible_com_nginx"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos.id}"]
 }
@@ -78,7 +87,7 @@ resource "aws_security_group" "acessos" {
 output "aws_instance_e_ssh" {
   value = [
     aws_instance.maquina_nginx.public_ip,
-    "ssh -i id_rsa_itau_treinamento ubuntu@${aws_instance.maquina_nginx.public_dns}"
+    "ssh -i /home/ubuntu/.ssh/id_rsa ubuntu@${aws_instance.maquina_nginx.public_dns}"
   ]
 }
 
