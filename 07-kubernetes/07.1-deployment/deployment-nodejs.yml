@@ -2,26 +2,32 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodejs-deployment
-  # namespace: umnamespace # para colocar em um namespace diferente
 spec:
   template:
     metadata:
-      name: pod-nodejs
+      name: vini-nodejs
       labels:
-        app: lable-pod-nodejs
+        app: vini-nodejs
     spec:
       containers:
-        - name: container-nodejs
-          image: didox/app-imersao-docker-nodejs
+        - name: container-pod-nodejs
+          image: didox/app-nodejs-validacao-cnpj
           ports:
             - containerPort: 3000
-          # env:
-          #   - name: "DATABASE_URLS"
-          #     value: "https://usuario@senha:mysql.server:3306"
-  replicas: 3
+
+          resources:
+            requests:
+              memory: "800Mi" # 512 MB
+              cpu: "1" # 0.5 milicors VCPU # este recurso tira do meu cluster este recurso #https://sysdig.com/blog/kubernetes-limits-requests/
+            limits: # caso a aplicação precise de mais recurso, ele coloca este limite automático
+              memory: "900Mi" # 800 MB
+              cpu: "2"
+
+  replicas: 2
   selector:
     matchLabels:
-      app: lable-pod-nodejs
+      app: vini-nodejs
+
 
 
 # $ kubectl apply -f deployment-nodejs.yml

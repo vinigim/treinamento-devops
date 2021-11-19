@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: didox-nginx
+  name: vini-app-nodejs
   labels:
-    app: didox-nginx
+    app: vini-app-nodejs
 spec:
   containers:
-    - name: container-pod-nginx
-      image: nginx:latest
+    - name: container-pod-nodejs
+      image: didox/app-nodejs-validacao-cnpj
       ports:
-        - containerPort: 80
+        - containerPort: 3000
 
 # kubectl apply -f pod-nginx.yml
 # kubectl describe -f pod-nginx.yml

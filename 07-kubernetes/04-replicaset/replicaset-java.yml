@@ -1,31 +1,32 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: java-replicaset
+  name: nodejs-replicaset
 spec:
   template:
     metadata:
-      name: pod-javadb
+      name: vini-app-nodejs
       labels:
-        app: pod-javadb
+        app: vini-app-nodejs
     spec:
       containers:
         - name: container-pod-javadb
-          image: didox/crud-java-login:v0.0.1
-          env:
-            - name: USER
-              value: root
-            - name: PASSWORD
-              value: password_mysql
-            - name: DATABASE_URL
-              value: mysql://mysql:3306/SpringWebYoutubeTest?useTimezone=true&serverTimezone=UTC
-              # value: mysql://10.111.41.255:3306/SpringWebYoutubeTest?useTimezone=true&serverTimezone=UTC
+          image: didox/app-nodejs-validacao-cnpj
+          # env:
+          #   - name: USER
+          #     value: root
+          #   - name: PASSWORD
+          #     value: password_mysql
+          #   - name: DATABASE_URL
+          #     value: mysql://mysql:3306/SpringWebYoutubeTest?useTimezone=true&serverTimezone=UTC
+          #     # value: mysql://10.111.41.255:3306/SpringWebYoutubeTest?useTimezone=true&serverTimezone=UTC
+          # ports:
           ports:
-            - containerPort: 8080
-  replicas: 2
+            - containerPort: 3000
+  replicas: 3
   selector:
     matchLabels:
-      app: pod-javadb
+      app: vini-app-nodejs
 
 
 # $ kubectl logs -l app=lable-pod-java # log de todos os lables do replicaset
