@@ -8,7 +8,7 @@ data "http" "myip" {
 
 resource "aws_instance" "dev_img_deploy_jenkins" {
   subnet_id     = "subnet-048155f5678ed3564"
-  ami           = "ami-07c267c1d2395046a"
+  ami           = "ami-0d38409c6e12dd6ef"
   instance_type = "t3.large"
   key_name      = "chave_key_vini_06"
   # ami           = "ami-09e67e426f25ce0d7"
