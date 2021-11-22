@@ -71,6 +71,9 @@
     - name: "Dar permissao na chave"
       shell: chmod 400 /home/ubuntu/.ssh/id_rsa
 
+    - name: "Dar permissao na chave"
+      shell: chown jenkins:jenkins /var/lib/jenkins/.ssh/id_rsa
+
     - shell: cat /var/lib/jenkins/secrets/initialAdminPassword
       register: ps
     - debug:
