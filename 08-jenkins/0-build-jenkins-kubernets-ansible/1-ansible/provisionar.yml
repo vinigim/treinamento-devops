@@ -18,8 +18,8 @@
     - name: "Instala unzip"
       shell: "sudo apt install unzip -y"
 
-    - name: "Instala awscli"
-      shell: "apt install awscli -y"
+    # - name: "Instala awscli"
+    #   shell: "apt install awscli -y"
       
     - name: "Instala java"
       shell: "apt install default-jdk -y"
@@ -57,10 +57,19 @@
     - name: Espera 30 segundos
       wait_for: timeout=30
 
+    
+
     ## outra dorma reduzida de se fazer
     # - shell: cat /var/lib/jenkins/secrets/initialAdminPassword
     #   register: ps
     # - debug: var=ps.stdout_lines
+    - name: "Copia Chave privada"
+      copy:
+        src: "/home/ubuntu/.ssh/id_rsa"
+        dest: "/home/ubuntu/.ssh/id_rsa"
+
+    - name: "Dar permissao na chave"
+      shell: chmod 400 /home/ubuntu/.ssh/id_rsa
 
     - shell: cat /var/lib/jenkins/secrets/initialAdminPassword
       register: ps
