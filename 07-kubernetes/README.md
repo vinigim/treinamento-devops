@@ -21,7 +21,7 @@ kubectl describe pod  didox-nginx
 kubectl exec -it didox-nginx bash 
 
 # Acessa o pod via ssh 
-kubectl exec --stdin --tty didox-nginx -- /bin/bash 
+kubectl exec --stdin --tty mysql-6886bfcbcd-97l6k -- /bin/bash 
 
 # Edita pod
 kubectl edit pod didox-nginx
