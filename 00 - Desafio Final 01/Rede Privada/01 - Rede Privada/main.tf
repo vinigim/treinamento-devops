@@ -36,3 +36,14 @@ output "instance_ip_ami" {
   ]
   description = "Mostra o DNS, os IPs publicos e privados e o AMI da maquina criada."
 }
+
+output "subnets_vpc" {
+  value = [
+    aws_subnet.my_subnet_a.id, 
+    aws_subnet.my_subnet_b.id,
+    aws_subnet.my_subnet_c.id,
+    aws_subnet.my_subnet_c_priv.id,
+    aws_vpc.my_vpc.id
+  ]
+  description = "Mostra as subnets criadas."
+}

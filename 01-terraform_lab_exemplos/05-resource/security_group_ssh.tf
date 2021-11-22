@@ -5,7 +5,7 @@
 # egress = [ # outbound
 
 resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh_vinicius_rev_02"
+  name        = "allow_ssh_vinicius_rev_04"
   description = "Allow inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
