@@ -116,7 +116,7 @@ ff02::3 ip6-allhosts
 
 cd ../2-ansible/01-k8s-install-masters_e_workers
 
-ANSIBLE_OUT=$(ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /home/ubuntu/.ssh/id_rsa)
+ANSIBLE_OUT=$(ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa)
 
 #### Mac ###
 #K8S_JOIN_MASTER=$(echo $ANSIBLE_OUT | grep -oE "(kubeadm join.*?certificate-key.*?)'" | sed 's/\\//g' | sed "s/'t//g" | sed "s/'//g" | sed "s/,//g")
@@ -166,4 +166,4 @@ cat <<EOF > 2-provisionar-k8s-master-auto-shell.yml
         msg: " '{{ ps.stdout_lines }}' "
 EOF
 
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key /home/ubuntu/.ssh/id_rsa
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
