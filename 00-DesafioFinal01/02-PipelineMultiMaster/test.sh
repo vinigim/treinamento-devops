@@ -141,7 +141,7 @@ cat <<EOF > /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-Pi
         msg: " '{{ ps.stdout_lines }}' "
 EOF
 
-# ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
+ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts 2-provisionar-k8s-master-test.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
 
 # uri=$(ps.stdout_lines | grep public_ip | awk '{print $2;exit}' | sed -e "s/\",//g")
 # echo $uri
