@@ -135,6 +135,7 @@ resource "aws_security_group" "acessos_masters" {
     #   self             = false
     #   to_port          = 0
     # },
+    # 
     {
       cidr_blocks      = [
         "0.0.0.0/0",
