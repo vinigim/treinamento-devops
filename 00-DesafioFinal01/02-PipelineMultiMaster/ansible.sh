@@ -114,7 +114,8 @@
 # " > ../2-ansible/01-k8s-install-masters_e_workers/host/hosts
 
 
-cd ../2-ansible/01-k8s-install-masters_e_workers
+# cd ../2-ansible/01-k8s-install-masters_e_workers
+cd /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-PipelineMultiMaster/2-ansible/01-k8s-install-masters_e_workers
 
 ANSIBLE_OUT=$(ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa)
 
