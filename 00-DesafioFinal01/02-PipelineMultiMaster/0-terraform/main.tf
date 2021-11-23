@@ -121,20 +121,20 @@ resource "aws_security_group" "acessos_masters" {
       self             = false
       to_port          = 0
     },
-    # {
-    #   cidr_blocks      = []
-    #   description      = "Libera acesso k8s_workers"
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
-    #     "sg-082aca1fa06121961",
-    #     //aws_security_group.acessos_masters.id
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
+    {
+      cidr_blocks      = []
+      description      = "Libera acesso k8s_workers"
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
+        "sg-00ae0d05471a7c2b3",
+        //aws_security_group.acessos_masters.id
+      ]
+      self             = false
+      to_port          = 0
+    },
     # 
     {
       cidr_blocks      = [
@@ -187,32 +187,32 @@ resource "aws_security_group" "acessos_haproxy" {
       security_groups: null,
       self: null
     },
-    # {
-    #   cidr_blocks      = []
-    #   description      = ""
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
-    #     "sg-0f7c46582a582ddb1",
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
-    # {
-    #   cidr_blocks      = []
-    #   description      = ""
-    #   from_port        = 0
-    #   ipv6_cidr_blocks = []
-    #   prefix_list_ids  = []
-    #   protocol         = "-1"
-    #   security_groups  = [
-    #     "sg-0da3d59816b1debf9",
-    #   ]
-    #   self             = false
-    #   to_port          = 0
-    # },
+    {
+      cidr_blocks      = []
+      description      = ""
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
+        "sg-00ae0d05471a7c2b3",
+      ]
+      self             = false
+      to_port          = 0
+    },
+    {
+      cidr_blocks      = []
+      description      = ""
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = [
+        "sg-0721574f6597c2ff5",
+      ]
+      self             = false
+      to_port          = 0
+    },
     {
       cidr_blocks      = []
       description      = ""
