@@ -133,8 +133,6 @@ cat <<EOF > /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-Pi
   - ec2-k8s-m1
   become: yes
   tasks:
-    - name: "Configura weavenet para reconhecer os nós master e workers"
-      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     - name: Espera 30 segundos para teste
       wait_for: timeout=30
     - shell: kubectl get nodes -o wide
