@@ -70,7 +70,7 @@ resource "aws_instance" "k8s_workers" {
 
 
 resource "aws_security_group" "acessos_masters" {
-  name        = "k8s-acessos_masters"
+  name        = "sg-vini-k8s-acessos_masters"
   description = "acessos inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
@@ -171,7 +171,7 @@ resource "aws_security_group" "acessos_masters" {
 }
 
 resource "aws_security_group" "acessos_haproxy" {
-  name        = "k8s-haproxy"
+  name        = "sg-vini-k8s-haproxy"
   description = "acessos inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
@@ -187,32 +187,32 @@ resource "aws_security_group" "acessos_haproxy" {
       security_groups: null,
       self: null
     },
-    {
-      cidr_blocks      = []
-      description      = ""
-      from_port        = 0
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      protocol         = "-1"
-      security_groups  = [
-        "sg-0f7c46582a582ddb1",
-      ]
-      self             = false
-      to_port          = 0
-    },
-    {
-      cidr_blocks      = []
-      description      = ""
-      from_port        = 0
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      protocol         = "-1"
-      security_groups  = [
-        "sg-0da3d59816b1debf9",
-      ]
-      self             = false
-      to_port          = 0
-    },
+    # {
+    #   cidr_blocks      = []
+    #   description      = ""
+    #   from_port        = 0
+    #   ipv6_cidr_blocks = []
+    #   prefix_list_ids  = []
+    #   protocol         = "-1"
+    #   security_groups  = [
+    #     "sg-0f7c46582a582ddb1",
+    #   ]
+    #   self             = false
+    #   to_port          = 0
+    # },
+    # {
+    #   cidr_blocks      = []
+    #   description      = ""
+    #   from_port        = 0
+    #   ipv6_cidr_blocks = []
+    #   prefix_list_ids  = []
+    #   protocol         = "-1"
+    #   security_groups  = [
+    #     "sg-0da3d59816b1debf9",
+    #   ]
+    #   self             = false
+    #   to_port          = 0
+    # },
     {
       cidr_blocks      = []
       description      = ""
@@ -246,7 +246,7 @@ resource "aws_security_group" "acessos_haproxy" {
 }
 
 resource "aws_security_group" "acessos_workers" {
-  name        = "k8s-workers"
+  name        = "sg-vini-k8s-workers"
   description = "acessos inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
