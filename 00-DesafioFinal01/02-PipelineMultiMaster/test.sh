@@ -127,43 +127,32 @@
 
 # echo $K8S_JOIN_MASTER
 # echo $K8S_JOIN_WORKER
-
-cat <<EOF > 2-provisionar-k8s-master-auto-shell.yml
-# - hosts:
-#   - ec2-k8s-m2
-#   - ec2-k8s-m3
-#   become: yes
-#   tasks:
-#     - name: "Reset cluster"
-#       shell: "kubeadm reset -f"
-#     - name: "Fazendo join kubernetes master"
-#       shell: $K8S_JOIN_MASTER
-#     - name: "Colocando no path da maquina o conf do kubernetes"
-#       shell: mkdir -p $HOME/.kube && sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config && sudo chown $(id -u):$(id -g) $HOME/.kube/config && export KUBECONFIG=/etc/kubernetes/admin.conf
-# #---
-# - hosts:
-#   - ec2-k8s-w1
-#   - ec2-k8s-w2
-#   - ec2-k8s-w3
-#   become: yes
-#   tasks:
-#     - name: "Reset cluster"
-#       shell: "kubeadm reset -f"
-#     - name: "Fazendo join kubernetes worker"
-#       shell: $K8S_JOIN_WORKER
-# #---
+# /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-PipelineMultiMaster/2-ansible/01-k8s-install-masters_e_workers/2-provisionar-k8s-master-auto-shell.yml
+cat <<EOF > /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-PipelineMultiMaster/2-ansible/01-k8s-install-masters_e_workers/2-provisionar-k8s-master-test.yml
 - hosts:
   - ec2-k8s-m1
   become: yes
   tasks:
-    # - name: "Configura weavenet para reconhecer os nós master e workers"
-    #   shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=\$(kubectl version | base64 | tr -d '\n')"
+    - name: "Configura weavenet para reconhecer os nós master e workers"
+      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     - name: Espera 30 segundos para teste
       wait_for: timeout=30
     - shell: kubectl get nodes -o wide
       register: ps
     - debug:
         msg: " '{{ ps.stdout_lines }}' "
+# - hosts:
+#   - ec2-k8s-m1
+#   become: yes
+#   tasks:
+#     # - name: "Configura weavenet para reconhecer os nós master e workers"
+#     #   shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=\$(kubectl version | base64 | tr -d '\n')"
+#     - name: Espera 30 segundos para teste
+#       wait_for: timeout=30
+#     - shell: kubectl get nodes -o wide
+#       register: ps
+#     - debug:
+#         msg: " '{{ ps.stdout_lines }}' "
 EOF
 
 # ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
