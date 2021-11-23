@@ -70,7 +70,7 @@ resource "aws_instance" "k8s_workers" {
 
 
 resource "aws_security_group" "acessos_masters" {
-  name        = "sg-vini-k8s-acessos_masters"
+  name        = "vini-k8s-acessos_masters"
   description = "acessos inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
@@ -171,7 +171,7 @@ resource "aws_security_group" "acessos_masters" {
 }
 
 resource "aws_security_group" "acessos_haproxy" {
-  name        = "sg-vini-k8s-haproxy"
+  name        = "vini-k8s-haproxy"
   description = "acessos inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
@@ -246,7 +246,7 @@ resource "aws_security_group" "acessos_haproxy" {
 }
 
 resource "aws_security_group" "acessos_workers" {
-  name        = "sg-vini-k8s-workers"
+  name        = "vini-k8s-workers"
   description = "acessos inbound traffic"
   vpc_id = "vpc-00b1a90a7a03befbb"
 
