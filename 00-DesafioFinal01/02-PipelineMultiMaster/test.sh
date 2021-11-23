@@ -128,6 +128,8 @@
 # echo $K8S_JOIN_MASTER
 # echo $K8S_JOIN_WORKER
 # /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-PipelineMultiMaster/2-ansible/01-k8s-install-masters_e_workers/2-provisionar-k8s-master-auto-shell.yml
+# cd ../2-ansible/01-k8s-install-masters_e_workers
+cd /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-PipelineMultiMaster/2-ansible/01-k8s-install-masters_e_workers/
 cat <<EOF > /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-PipelineMultiMaster/2-ansible/01-k8s-install-masters_e_workers/2-provisionar-k8s-master-test.yml
 - hosts:
   - ec2-k8s-m1
