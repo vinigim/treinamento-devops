@@ -139,18 +139,6 @@ cat <<EOF > /var/lib/jenkins/workspace/PipelineDeployK8s/00-DesafioFinal01/02-Pi
       register: ps
     - debug:
         msg: " '{{ ps.stdout_lines }}' "
-# - hosts:
-#   - ec2-k8s-m1
-#   become: yes
-#   tasks:
-#     # - name: "Configura weavenet para reconhecer os nós master e workers"
-#     #   shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=\$(kubectl version | base64 | tr -d '\n')"
-#     - name: Espera 30 segundos para teste
-#       wait_for: timeout=30
-#     - shell: kubectl get nodes -o wide
-#       register: ps
-#     - debug:
-#         msg: " '{{ ps.stdout_lines }}' "
 EOF
 
 # ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts 2-provisionar-k8s-master-auto-shell.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
