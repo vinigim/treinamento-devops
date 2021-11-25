@@ -23,7 +23,7 @@ resource "aws_security_group" "acessos_workers_vini" {
       prefix_list_ids  = []
       protocol         = "-1"
       security_groups = [
-        aws_security_group.acessos_master.id,
+        aws_security_group.acessos_master_vini.id,
       ]
       self    = false
       to_port = 0
