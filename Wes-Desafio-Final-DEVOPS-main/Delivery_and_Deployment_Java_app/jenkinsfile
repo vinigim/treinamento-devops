@@ -3,10 +3,13 @@ pipeline {
 
     parameters {
         string(name: 'USER', defaultValue: '', description: 'Digite o usuario do banco de dados "root"')
-        choice(name: 'USER', choices: ['root')
+        choice(name: 'USER', choices: ['root'])
         string(name: 'PASSWORD', defaultValue: '', description: 'Digite a senha do banco de dados "Senha&12_torne00"')
+        choice(name: 'PASSWORD', choices: ['Senha&12_torne00'])
         string(name: 'DATABASE', defaultValue: '', description: 'Digite o nome da database "SpringWebYoutube"')
+        choice(name: 'DATABASE', choices: ['SpringWebYoutube'])
         string(name: 'DATABASE_URL', defaultValue: '', description: 'Digite a URL da DATABASE "mysql://127.0.0.1:3306/treinamento_database"')
+        choice(name: 'DATABASE_URL', choices: ['mysql://127.0.0.1:3306/treinamento_database'])
         string(name: 'DEV', defaultValue: '', description: 'Digite o ip do servidor myslq de Desenvolvimento')
         string(name: 'STAGE', defaultValue: '', description: 'Digite o ip do servidor mysql de Stage')
         string(name: 'PROD', defaultValue: '', description: 'Digite o ip do servidor mysql de Produção')
