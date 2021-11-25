@@ -10,7 +10,7 @@ resource "aws_nat_gateway" "nat_gatway_vini" {
   }
 
 }
-resource "aws_route_table" "nat_gateway" {
+resource "aws_route_table" "nat_gateway_vini" {
   vpc_id = var.vpc_id
 
   route = [
