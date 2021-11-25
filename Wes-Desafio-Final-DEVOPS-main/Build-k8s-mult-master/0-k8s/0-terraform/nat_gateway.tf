@@ -2,7 +2,7 @@ resource "aws_eip" "vini_eip" {
 
 }
 resource "aws_nat_gateway" "nat_gatway_vini" {
-  allocation_id = aws_eip.wes_eip.id
+  allocation_id = aws_eip.vini_eip.id
   subnet_id     = "subnet-048155f5678ed3564"
 
   tags = {
