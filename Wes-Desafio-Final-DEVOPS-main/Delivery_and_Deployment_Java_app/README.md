@@ -1,0 +1,1 @@
+Deployment de uma ec2 com mysql e java spring-boot utilizando terraform + ansible usando script de deploy.sh

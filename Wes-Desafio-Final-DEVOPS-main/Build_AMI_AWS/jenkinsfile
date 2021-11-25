@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/vinigim/treinamento-devops', branch: 'main'
+            }
+        }
+        stage('Build EC2') {
+            steps {
+                sh "Build_AMI_AWS/deploy.sh"
+            }
+        }
+        stage('Build AMI') {
+            steps {
+                sh "Build_AMI_AWS/package-ami.sh"
+            }
+        }
+        stage('Destroy Test EC2') {
+            steps {
+                sh "Build_AMI_AWS/destroy.sh"
+            }
+        }
+    }
+}

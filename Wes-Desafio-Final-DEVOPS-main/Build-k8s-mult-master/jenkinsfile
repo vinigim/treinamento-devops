@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'image_id', defaultValue: '', description: 'Digite o ID da AMI que será utilizad para o deploy')
+    } 
+    stages {
+        stage('Clone repo') {
+            steps {
+                git url: 'https://github.com/weslleyfs/Wes-Desafio-Final-DEVOPS.git', branch: 'main'
+            }
+        }
+        stage('Deploy Infra - Cluster K8S Mult Master') {
+            steps {
+                sh "Build-k8s-mult-master/0-k8s/deploy.sh"
+            }
+        }
+        stage('Configura e faz Join dos masters e workers') {
+            steps {
+                sh "Build-k8s-mult-master/0-k8s/provisiona_k8s-master.sh"
+            }
+        }
+        stage('Testa a configuração do Kubernetes e valida os hosts') {
+            steps {
+                sh "Build-k8s-mult-master/0-k8s/teste.sh"
+            }
+        }
+        
+    }
+}

@@ -67,7 +67,7 @@
 # kubectl get pod -n kube-system -w
 
 # kubectl get nodes -o wide # lista os nos com seus respectivos IPs
-# kubectl get all --all-namespaces # llista todos os pods do kubernetes
+# l --all-namespaces # llista todos os pods do kubernetes
 # kubectl get pods -n kube-system # lista os pods internos do kubernetes
 
 # etcd-k8s-master-0 # onde o kubernetes guarda suas informações, sua base de infos

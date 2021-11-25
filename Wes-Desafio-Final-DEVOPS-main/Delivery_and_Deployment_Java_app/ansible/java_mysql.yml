@@ -1,0 +1,39 @@
+- hosts: 
+  - database
+  environment:
+    PASSWORD: "{{ lookup('env', 'PASSWORD') }}"
+    DATABASE: "{{ lookup('env', 'DATABASE') }}"
+    USER: "{{ lookup('env', 'USER') }}"
+   
+  tasks:
+    - name: "Copia dump mysql para servidor"
+      copy:
+        src: "sql/db_backup.sql"
+        dest: "/home/ubuntu/"
+      become: yes
+
+    - name: "Restore dump mysql"
+      become: yes
+      shell: "mysql -u {{ lookup('env', 'USER') }} -p'{{ lookup('env', 'PASSWORD') }}' {{ lookup('env', 'DATABASE') }} < /home/ubuntu/db_backup.sql"
+# ---      
+- hosts: 
+    - kubernets-master
+  become: yes
+
+  tasks:
+    - name: "Copia os arquivos para executar o deployment dos pods"
+      copy:
+        src: "../kubernetes"
+        dest: "/root/"
+      
+    - name: "Aplica o deployment de DEV"
+      shell: kubectl apply -f /root/kubernetes/deployment_dev.yml
+
+    - name: "Aplica o deployment de STAGE"
+      shell: kubectl apply -f /root/kubernetes/deployment_stage.yml
+
+    - name: "Aplica o deployment de PROD"
+      shell: kubectl apply -f /root/kubernetes/deployment_prod.yml
+
+    - name: "Valida o deployment dos Pods"
+      shell: kubectl get all -o wide 

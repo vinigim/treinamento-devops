@@ -1,0 +1,6 @@
+[ec2-mysql-dev]
+172.20.114.137
+[ec2-mysql-stage]
+172.20.104.246
+[ec2-mysql-prod]
+172.20.156.80
