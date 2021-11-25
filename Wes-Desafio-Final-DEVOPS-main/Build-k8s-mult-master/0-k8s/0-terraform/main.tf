@@ -36,7 +36,7 @@ resource "aws_instance" "k8s_masters" {
   tags = {
     Name = "vini-k8s-master-${count.index}"
   }
-  vpc_security_group_ids = [aws_security_group.acessos_master.id]
+  vpc_security_group_ids = [aws_security_group.acessos_master_vini.id]
 }
 
 resource "aws_instance" "k8s_workers" {
@@ -81,7 +81,7 @@ output "security-group-workers-e-haproxy" {
 }
 
 output "security-group-master" {
-  value = aws_security_group.acessos_master.id
+  value = aws_security_group.acessos_master_vini.id
 }
 
 output "subnet_public_0" {
