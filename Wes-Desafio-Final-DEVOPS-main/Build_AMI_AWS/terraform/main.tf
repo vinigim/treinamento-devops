@@ -8,7 +8,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
   # key_name      = "weslley_key"
   key_name = "pair_key_vini_desafio"
   # subnet_id                   = "subnet-0341d478f8cd667a3"
-  subnet_id = "subnet-0a4feadfc5e155bb9"
+  subnet_id = "subnet-048155f5678ed3564"
   associate_public_ip_address = true
   root_block_device {
     encrypted   = true
@@ -23,7 +23,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
 resource "aws_security_group" "acesso_jenkins_dev_img" {
   name        = "vini_acesso_jenkins_dev_img"
   description = "acesso_jenkins_dev_img inbound traffic"
-  vpc_id      = "vpc-0fde8268982e3bfb1"
+  vpc_id      = "vpc-00b1a90a7a03befbb"
 
   ingress = [
     {
