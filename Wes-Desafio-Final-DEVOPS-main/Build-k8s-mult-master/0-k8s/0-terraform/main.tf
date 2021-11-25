@@ -19,7 +19,7 @@ resource "aws_instance" "k8s_proxy" {
   tags = {
     Name = "vini-k8s-haproxy"
   }
-  vpc_security_group_ids = [aws_security_group.acessos_workers.id]
+  vpc_security_group_ids = [aws_security_group.acessos_workers_vini.id]
 }
 
 
@@ -52,7 +52,7 @@ resource "aws_instance" "k8s_workers" {
   tags = {
     Name = "vini-k8s_workers-${count.index}"
   }
-  vpc_security_group_ids = [aws_security_group.acessos_workers.id]
+  vpc_security_group_ids = [aws_security_group.acessos_workers_vini.id]
 }
 
 output "k8s-masters" {
@@ -77,7 +77,7 @@ output "output-k8s_proxy" {
 }
 
 output "security-group-workers-e-haproxy" {
-  value = aws_security_group.acessos_workers.id
+  value = aws_security_group.acessos_workers_vini.id
 }
 
 output "security-group-master" {
