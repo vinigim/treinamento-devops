@@ -16,7 +16,7 @@ variable "ip_haproxy" {
 
 variable "internet_gw" {
   type    = string
-  default = "igw-054a2658906c6a922"
+  default = "igw-06f2161642bf93cba"
 
 }
 variable "vpc_id" {
