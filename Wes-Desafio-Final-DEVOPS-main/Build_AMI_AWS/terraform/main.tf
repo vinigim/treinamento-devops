@@ -21,7 +21,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
 }
 
 resource "aws_security_group" "acesso_jenkins_dev_img" {
-  name        = "vini_acesso_jenkins_dev_img"
+  name        = "vini_acesso_jenkins_dev_img_1"
   description = "acesso_jenkins_dev_img inbound traffic"
   vpc_id      = "vpc-00b1a90a7a03befbb"
 
