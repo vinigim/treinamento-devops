@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd terraform
+cd Wes-Desafio-Final-DEVOPS-main/Build_AMI_AWS
 terraform init
 terraform apply -auto-approve
 
