@@ -1,5 +1,5 @@
 resource "aws_security_group" "acessos_workers_vini" {
-  name        = "vini-k8s-workers"
+  name        = "vini-k8s-workers_1"
   description = "acessos inbound traffic"
   vpc_id      = var.vpc_id
 
