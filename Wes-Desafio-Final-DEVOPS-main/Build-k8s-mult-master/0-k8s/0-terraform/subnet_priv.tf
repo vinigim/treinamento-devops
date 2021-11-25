@@ -1,6 +1,6 @@
 resource "aws_subnet" "vini_sub_tf_priv_0" {
   vpc_id            = var.vpc_id
-  cidr_block        = "172.80.10.0/24"
+  cidr_block        = "10.20.10.0/24"
   availability_zone = "sa-east-1a"
 
   tags = {
@@ -10,7 +10,7 @@ resource "aws_subnet" "vini_sub_tf_priv_0" {
 
 resource "aws_subnet" "vini_sub_tf_priv_1" {
   vpc_id            = var.vpc_id
-  cidr_block        = "172.80.20.0/24"
+  cidr_block        = "10.20.20.0/24"
   availability_zone = "sa-east-1b"
 
   tags = {
@@ -20,7 +20,7 @@ resource "aws_subnet" "vini_sub_tf_priv_1" {
 
 resource "aws_subnet" "vini_sub_tf_priv_2" {
   vpc_id            = var.vpc_id
-  cidr_block        = "172.80.30.0/24"
+  cidr_block        = "10.20.30.0/24"
   availability_zone = "sa-east-1c"
 
   tags = {
