@@ -41,7 +41,7 @@ resource "aws_route_table" "rt_vini_tf_priv" {
       instance_id                = ""
       ipv6_cidr_block            = ""
       local_gateway_id           = ""
-      nat_gateway_id             = aws_nat_gateway.nat_gatway.id
+      nat_gateway_id             = aws_nat_gateway.nat_gatway_vini.id
       network_interface_id       = ""
       transit_gateway_id         = ""
       vpc_endpoint_id            = ""
