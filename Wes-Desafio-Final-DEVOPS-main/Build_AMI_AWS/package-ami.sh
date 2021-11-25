@@ -2,7 +2,7 @@
 
 VERSAO=$(git describe --tags $(git rev-list --tags --max-count=1))
 
-cd terraform 
+cd Wes-Desafio-Final-DEVOPS-main/Build_AMI_AWS/terraform 
 RESOURCE_ID=$(terraform output | grep resource_id | awk '{print $2;exit}' | sed -e "s/\",//g")
 
 cd ../terraform-ami
