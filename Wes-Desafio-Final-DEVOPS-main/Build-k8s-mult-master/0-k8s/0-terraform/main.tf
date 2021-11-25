@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  subs = concat([aws_subnet.vini_sub_tf_public_0.id], [aws_subnet.vini_sub_tf_public_1.id], [aws_subnet.vini_sub_tf_public_2.id])
+  subs = concat([aws_subnet.vini_sub_tf_public_01.id], [aws_subnet.vini_sub_tf_public_11.id], [aws_subnet.vini_sub_tf_public_2.id])
 }
 
 resource "aws_instance" "k8s_proxy" {
@@ -26,7 +26,7 @@ resource "aws_instance" "k8s_proxy" {
 resource "aws_instance" "k8s_masters" {
   ami = var.image_id
   depends_on = [
-    aws_subnet.vini_sub_tf_public_0, aws_subnet.vini_sub_tf_public_1, aws_instance.k8s_workers
+    aws_subnet.vini_sub_tf_public_01, aws_subnet.vini_sub_tf_public_11, aws_instance.k8s_workers
   ]
   instance_type               = "t3.large"
   key_name                    = "chave_key_vini_06"
@@ -42,7 +42,7 @@ resource "aws_instance" "k8s_masters" {
 resource "aws_instance" "k8s_workers" {
   ami = var.image_id
   depends_on = [
-    aws_subnet.vini_sub_tf_public_0, aws_subnet.vini_sub_tf_public_1
+    aws_subnet.vini_sub_tf_public_01, aws_subnet.vini_sub_tf_public_11
   ]
   instance_type               = "t3.medium"
   key_name                    = "chave_key_vini_06"
@@ -85,25 +85,25 @@ output "security-group-master" {
 }
 
 output "subnet_public_0" {
-  value = aws_subnet.vini_sub_tf_public_0.id
+  value = aws_subnet.vini_sub_tf_public_01.id
 }
 
 output "subnet_public_1" {
-  value = aws_subnet.vini_sub_tf_public_1.id
+  value = aws_subnet.vini_sub_tf_public_11.id
 }
 
 output "subnet_public_2" {
-  value = aws_subnet.vini_sub_tf_public_1.id
+  value = aws_subnet.vini_sub_tf_public_11.id
 }
 
 output "subnet_priv_0" {
-  value = aws_subnet.vini_sub_tf_priv_0.id
+  value = aws_subnet.vini_sub_tf_priv_01.id
 }
 
 output "subnet_priv_1" {
-  value = aws_subnet.vini_sub_tf_priv_1.id
+  value = aws_subnet.vini_sub_tf_priv_11.id
 }
 
 output "subnet_priv_2" {
-  value = aws_subnet.vini_sub_tf_priv_2.id
+  value = aws_subnet.vini_sub_tf_priv_21.id
 }
