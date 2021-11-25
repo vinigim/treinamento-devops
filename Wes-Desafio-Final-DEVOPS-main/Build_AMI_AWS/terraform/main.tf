@@ -6,7 +6,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
   ami           = "ami-0e66f5495b4efdd0f"
   instance_type = "t2.large"
   # key_name      = "weslley_key"
-  key_name = "pair_key_vini_desafio"
+  key_name = "chave_key_vini_06"
   # subnet_id                   = "subnet-0341d478f8cd667a3"
   subnet_id = "subnet-048155f5678ed3564"
   associate_public_ip_address = true
@@ -21,7 +21,7 @@ resource "aws_instance" "dev_img_deploy_jenkins" {
 }
 
 resource "aws_security_group" "acesso_jenkins_dev_img" {
-  name        = "vini_acesso_jenkins_dev_img_1"
+  name        = "vini_acesso_jenkins_dev_img_2"
   description = "acesso_jenkins_dev_img inbound traffic"
   vpc_id      = "vpc-00b1a90a7a03befbb"
 
