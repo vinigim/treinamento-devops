@@ -1,5 +1,5 @@
-resource "aws_security_group" "acessos_master" {
-  name        = "wes-k8s-acessos_master"
+resource "aws_security_group" "acessos_master_vini" {
+  name        = "vini-k8s-acessos_master"
   description = "acessos inbound traffic"
   vpc_id      = var.vpc_id
 
@@ -81,6 +81,6 @@ resource "aws_security_group" "acessos_master" {
   ]
 
   tags = {
-    Name = "allow_ssh"
+    Name = "vini_desafio_allow_ssh"
   }
 }

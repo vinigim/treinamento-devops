@@ -1,34 +1,34 @@
-resource "aws_subnet" "wes_sub_tf_priv_0" {
+resource "aws_subnet" "vini_sub_tf_priv_0" {
   vpc_id            = var.vpc_id
   cidr_block        = "172.20.112.0/20"
   availability_zone = "sa-east-1a"
 
   tags = {
-    Name = "wes_sub_tf_priv_0"
+    Name = "vini_sub_tf_priv_0"
   }
 }
 
-resource "aws_subnet" "wes_sub_tf_priv_1" {
+resource "aws_subnet" "vini_sub_tf_priv_1" {
   vpc_id            = var.vpc_id
   cidr_block        = "172.20.144.0/20"
   availability_zone = "sa-east-1b"
 
   tags = {
-    Name = "wes_sub_tf_priv_1"
+    Name = "vini_sub_tf_priv_1"
   }
 }
 
-resource "aws_subnet" "wes_sub_tf_priv_2" {
+resource "aws_subnet" "vini_sub_tf_priv_2" {
   vpc_id            = var.vpc_id
   cidr_block        = "172.20.96.0/20"
   availability_zone = "sa-east-1c"
 
   tags = {
-    Name = "wes_sub_tf_priv_2"
+    Name = "vini_sub_tf_priv_2"
   }
 }
 
-resource "aws_route_table" "rt_wes_tf_priv" {
+resource "aws_route_table" "rt_vini_tf_priv" {
   vpc_id = var.vpc_id
 
   route = [
@@ -50,21 +50,21 @@ resource "aws_route_table" "rt_wes_tf_priv" {
   ]
 
   tags = {
-    Name = "rt_wes_tf_priv"
+    Name = "rt_vini_tf_priv"
   }
 }
 
 resource "aws_route_table_association" "priv_0" {
-  subnet_id      = aws_subnet.wes_sub_tf_priv_0.id
-  route_table_id = aws_route_table.rt_wes_tf_priv.id
+  subnet_id      = aws_subnet.vini_sub_tf_priv_0.id
+  route_table_id = aws_route_table.rt_vini_tf_priv.id
 }
 
 resource "aws_route_table_association" "priv_1" {
-  subnet_id      = aws_subnet.wes_sub_tf_priv_1.id
-  route_table_id = aws_route_table.rt_wes_tf_priv.id
+  subnet_id      = aws_subnet.vini_sub_tf_priv_1.id
+  route_table_id = aws_route_table.rt_vini_tf_priv.id
 }
 
 resource "aws_route_table_association" "priv_2" {
-  subnet_id      = aws_subnet.wes_sub_tf_priv_2.id
-  route_table_id = aws_route_table.rt_wes_tf_priv.id
+  subnet_id      = aws_subnet.vini_sub_tf_priv_2.id
+  route_table_id = aws_route_table.rt_vini_tf_priv.id
 }

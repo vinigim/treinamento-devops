@@ -1,5 +1,5 @@
-resource "aws_security_group" "acessos_workers" {
-  name        = "wes-k8s-workers"
+resource "aws_security_group" "acessos_workers_vini" {
+  name        = "vini-k8s-workers"
   description = "acessos inbound traffic"
   vpc_id      = var.vpc_id
 
@@ -56,6 +56,6 @@ resource "aws_security_group" "acessos_workers" {
   ]
 
   tags = {
-    Name = "allow_ssh"
+    Name = "vini_desafio_allow_ssh"
   }
 }

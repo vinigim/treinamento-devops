@@ -1,12 +1,12 @@
-resource "aws_eip" "wes_eip" {
+resource "aws_eip" "vini_eip" {
 
 }
-resource "aws_nat_gateway" "nat_gatway" {
+resource "aws_nat_gateway" "nat_gatway_vini" {
   allocation_id = aws_eip.wes_eip.id
-  subnet_id     = "subnet-0341d478f8cd667a3"
+  subnet_id     = "subnet-048155f5678ed3564"
 
   tags = {
-    Name = "Wes-NAT-GW"
+    Name = "Vini-NAT-GW"
   }
 
 }
@@ -32,6 +32,6 @@ resource "aws_route_table" "nat_gateway" {
   ]
 
   tags = {
-    Name = "Wes-RT-NAT-GW"
+    Name = "vini-RT-NAT-GW"
   }
 }

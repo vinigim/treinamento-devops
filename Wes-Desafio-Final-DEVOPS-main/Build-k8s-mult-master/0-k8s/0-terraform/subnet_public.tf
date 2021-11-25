@@ -1,34 +1,34 @@
-resource "aws_subnet" "wes_sub_tf_public_0" {
+resource "aws_subnet" "vini_sub_tf_public_0" {
   vpc_id            = var.vpc_id
   cidr_block        = "172.20.160.0/20"
   availability_zone = "sa-east-1a"
 
   tags = {
-    Name = "wes_sub_tf_public_0"
+    Name = "vini_sub_tf_public_0"
   }
 }
 
-resource "aws_subnet" "wes_sub_tf_public_1" {
+resource "aws_subnet" "vini_sub_tf_public_1" {
   vpc_id            = var.vpc_id
   cidr_block        = "172.20.192.0/20"
   availability_zone = "sa-east-1b"
 
   tags = {
-    Name = "wes_sub_tf_public_1"
+    Name = "vini_sub_tf_public_1"
   }
 }
 
-resource "aws_subnet" "wes_sub_tf_public_2" {
+resource "aws_subnet" "vini_sub_tf_public_2" {
   vpc_id            = var.vpc_id
   cidr_block        = "172.20.224.0/20"
   availability_zone = "sa-east-1c"
 
   tags = {
-    Name = "wes_sub_tf_public_2"
+    Name = "vini_sub_tf_public_2"
   }
 }
 
-resource "aws_route_table" "rt_wes_tf_public" {
+resource "aws_route_table" "rt_vini_tf_public" {
   vpc_id = var.vpc_id
 
   route = [
@@ -50,21 +50,21 @@ resource "aws_route_table" "rt_wes_tf_public" {
   ]
 
   tags = {
-    Name = "rt_wes_tf_public"
+    Name = "rt_vini_tf_public"
   }
 }
 
 resource "aws_route_table_association" "public_0" {
-  subnet_id      = aws_subnet.wes_sub_tf_public_0.id
-  route_table_id = aws_route_table.rt_wes_tf_public.id
+  subnet_id      = aws_subnet.vini_sub_tf_public_0.id
+  route_table_id = aws_route_table.rt_vini_tf_public.id
 }
 
 resource "aws_route_table_association" "public_1" {
-  subnet_id      = aws_subnet.wes_sub_tf_public_1.id
-  route_table_id = aws_route_table.rt_wes_tf_public.id
+  subnet_id      = aws_subnet.vini_sub_tf_public_1.id
+  route_table_id = aws_route_table.rt_vini_tf_public.id
 }
 
 resource "aws_route_table_association" "public_2" {
-  subnet_id      = aws_subnet.wes_sub_tf_public_2.id
-  route_table_id = aws_route_table.rt_wes_tf_public.id
+  subnet_id      = aws_subnet.vini_sub_tf_public_2.id
+  route_table_id = aws_route_table.rt_vini_tf_public.id
 }

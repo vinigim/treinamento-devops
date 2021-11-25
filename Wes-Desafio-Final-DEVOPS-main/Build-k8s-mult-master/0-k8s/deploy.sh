@@ -7,7 +7,7 @@
 #### idéia para buscar itens do debugger do ansible ####
 # | grep -oP "(kubeadm join.*?certificate-key.*?)'" | sed 's/\\//g' | sed "s/'//g" | sed "s/'t//g" | sed "s/,//g"
 
-cd Build-k8s-mult-master/0-k8s/0-terraform
+cd Wes-Desafio-Final-DEVOPS-main/Build-k8s-mult-master/0-k8s/0-terraform
 terraform init
 TF_VAR_image_id=$image_id terraform apply -auto-approve
 
@@ -21,10 +21,10 @@ SG_IG_W=$(terraform output | grep security-group-workers-e-haproxy | awk '{print
 echo $SG_IG_W
 
 cat <<EOF > security_group_master.tf
-resource "aws_security_group" "acessos_master" {
-  name        = "wes-k8s-acessos_master"
+resource "aws_security_group" "acessos_master_vini" {
+  name        = "vini-k8s-acessos_master"
   description = "acessos inbound traffic"
-  vpc_id = "vpc-0050d085a3350c2c9"
+  vpc_id = "vpc-00b1a90a7a03befbb"
 
   ingress = [
     {
@@ -101,7 +101,7 @@ resource "aws_security_group" "acessos_master" {
   ]
 
   tags = {
-    Name = "allow_ssh"
+    Name = "vini_desafio_allow_ssh"
   }
 }
 EOF
@@ -218,7 +218,7 @@ ff02::3 ip6-allhosts
 
 cd ../2-ansible/01-k8s-install-masters_e_workers
 
-ANSIBLE_OUT=$(ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/weslley_itau_rsa)
+ANSIBLE_OUT=$(ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa)
 
 #### Mac ###
 # K8S_JOIN_MASTER=$(echo $ANSIBLE_OUT | grep -oE "(kubeadm join.*?certificate-key.*?)'" | sed 's/\\//g' | sed "s/'t//g" | sed "s/'//g" | sed "s/,//g")
@@ -285,7 +285,7 @@ terraform destroy -auto-approve
 
 echo "
 #!/bin/bash
-ssh -i ~/.ssh/weslley_itau_rsa -o ServerAliveInterval=60 -o StrictHostKeyChecking=no ubuntu@$ID_M1_DNS sudo kubectl get nodes -o wide
+ssh -i ~/.ssh/id_rsa -o ServerAliveInterval=60 -o StrictHostKeyChecking=no ubuntu@$ID_M1_DNS sudo kubectl get nodes -o wide
 
 cd Build-k8s-mult-master/0-k8s/0-terraform
 SUB_PRIV_0=$(terraform output | grep subnet_priv_0 | awk '{print $3}' | sed -e "s/\"//g")
