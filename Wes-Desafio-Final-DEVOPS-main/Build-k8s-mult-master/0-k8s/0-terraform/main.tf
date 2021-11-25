@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  subs = concat([aws_subnet.vini_sub_tf_public_01.id], [aws_subnet.vini_sub_tf_public_11.id], [aws_subnet.vini_sub_tf_public_20.id])
+  subs = concat([aws_subnet.vini_sub_tf_public_01.id], [aws_subnet.vini_sub_tf_public_11.id], [aws_subnet.vini_sub_tf_public_21.id])
 }
 
 resource "aws_instance" "k8s_proxy" {
