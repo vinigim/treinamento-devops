@@ -19,6 +19,6 @@
 }
 variable "vpc_id" {
   type    = string
-  default = "vpc-0050d085a3350c2c9"
+  default = "vpc-00b1a90a7a03befbb"
 
 }

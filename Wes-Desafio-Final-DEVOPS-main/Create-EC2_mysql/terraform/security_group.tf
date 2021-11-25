@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "mysql" {
-  name        = "wes_priv_mysql"
+  name        = "vini_priv_mysql"
   description = "acessos inbound traffic"
   vpc_id = var.vpc_id 
   ingress = [
@@ -44,6 +44,6 @@ resource "aws_security_group" "mysql" {
   ]
 
   tags = {
-    Name = "wes_priv_mysql"
+    Name = "vini_priv_mysql"
   }
 }

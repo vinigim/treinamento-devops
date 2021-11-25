@@ -14,17 +14,17 @@ pipeline {
     stages {
         stage('Clone repo') {
             steps {
-                git url: 'https://github.com/weslleyfs/Wes-Desafio-Final-DEVOPS.git', branch: 'main'
+                git url: 'https://github.com/vinigim/treinamento-devops', branch: 'main'
             }
         }
         stage('Deploy Infra - Mysql priv') {
             steps {
-                sh "Create-EC2_mysql/deploy.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Create-EC2_mysql/deploy.sh"
             }
         }
         stage('Configura o mysql') {
             steps {
-                sh "Create-EC2_mysql/configura_mysql.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Create-EC2_mysql/configura_mysql.sh"
             }
         }
                 
