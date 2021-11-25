@@ -9,17 +9,17 @@ pipeline {
         }
         stage('Build EC2') {
             steps {
-                sh "Build_AMI_AWS/deploy.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Build_AMI_AWS/deploy.sh"
             }
         }
         stage('Build AMI') {
             steps {
-                sh "Build_AMI_AWS/package-ami.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Build_AMI_AWS/package-ami.sh"
             }
         }
         stage('Destroy Test EC2') {
             steps {
-                sh "Build_AMI_AWS/destroy.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Build_AMI_AWS/destroy.sh"
             }
         }
     }
