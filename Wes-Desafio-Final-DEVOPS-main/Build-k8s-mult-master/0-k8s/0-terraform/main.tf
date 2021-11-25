@@ -9,7 +9,7 @@ locals {
 resource "aws_instance" "k8s_proxy" {
   ami = var.image_id
   depends_on = [
-    aws_subnet.vini_sub_tf_public_0, aws_subnet.vini_sub_tf_public_1
+    aws_subnet.vini_sub_tf_public_01, aws_subnet.vini_sub_tf_public_11
   ]
   instance_type               = "t3.medium"
   key_name                    = "chave_key_vini_06"
