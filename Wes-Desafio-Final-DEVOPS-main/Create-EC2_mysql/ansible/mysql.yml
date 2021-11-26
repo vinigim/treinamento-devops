@@ -26,7 +26,7 @@
     DATABASE: "{{ lookup('env', 'DATABASE') }}"
     USER: "{{ lookup('env', 'USER') }}"
 
-  - name: "Aguarda finalizar o lock"
+    - name: "Aguarda finalizar o lock"
       shell: "sleep 10"
 
   tasks:  
