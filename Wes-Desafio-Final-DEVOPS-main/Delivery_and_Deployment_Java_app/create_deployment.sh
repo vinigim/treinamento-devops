@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-prod
-          image: vinigim/crud-java-login:v0.0.1
+          image: vinigim/crud-java-login:v0.1.0
           env:
             - name: USER
               valueFrom:
@@ -87,7 +87,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-stage
-          image: vinigim/crud-java-login:v0.0.1
+          image: vinigim/crud-java-login:v0.1.0
           env:
             - name: USER
               valueFrom:
@@ -146,7 +146,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-dev
-          image: vinigim/crud-java-login:v0.0.1
+          image: vinigim/crud-java-login:v0.1.0
           env:
             - name: USER
               valueFrom:
