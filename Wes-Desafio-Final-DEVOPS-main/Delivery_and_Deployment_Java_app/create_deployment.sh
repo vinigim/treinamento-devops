@@ -5,7 +5,7 @@ echo $DATABASE
 echo $DEV
 echo $PROD 
 echo $STAGE
-cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/kubernetes/deployment_prod.yml
+cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/Kubernetes/deployment_prod.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -64,7 +64,7 @@ spec:
   selector:
     app: pod-javadb-prod
 EOF
-cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/kubernetes/deployment_stage.yml
+cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/Kubernetes/deployment_stage.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -123,7 +123,7 @@ spec:
   selector:
     app: pod-javadb-stage
 EOF
-cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/kubernetes/deployment_dev.yml
+cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/Kubernetes/deployment_dev.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
