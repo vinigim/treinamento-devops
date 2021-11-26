@@ -23,17 +23,17 @@
   tasks:
     - name: "Copia os arquivos para executar o deployment dos pods"
       copy:
-        src: "../kubernetes"
+        src: "../Kubernetes"
         dest: "/root/"
       
     - name: "Aplica o deployment de DEV"
-      shell: kubectl apply -f /root/kubernetes/deployment_dev.yml
+      shell: kubectl apply -f /root/Kubernetes/deployment_dev.yml
 
     - name: "Aplica o deployment de STAGE"
-      shell: kubectl apply -f /root/kubernetes/deployment_stage.yml
+      shell: kubectl apply -f /root/Kubernetes/deployment_stage.yml
 
     - name: "Aplica o deployment de PROD"
-      shell: kubectl apply -f /root/kubernetes/deployment_prod.yml
+      shell: kubectl apply -f /root/Kubernetes/deployment_prod.yml
 
     - name: "Valida o deployment dos Pods"
       shell: kubectl get all -o wide 
