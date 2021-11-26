@@ -7,10 +7,10 @@ $PROD
 
 [kubernets-master]
 $K8sMaster
-" > Delivery_and_Deployment_Java_app/ansible/hosts
-cd Delivery_and_Deployment_Java_app/ansible
+" > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/ansible/hosts
+cd Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/ansible
 
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts java_mysql.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/weslley_itau_rsa
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts java_mysql.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
 
 echo  "Aguardando o start das aplicações"
 sleep 10

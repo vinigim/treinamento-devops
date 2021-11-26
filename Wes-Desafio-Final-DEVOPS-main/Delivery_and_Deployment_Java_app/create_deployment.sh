@@ -5,7 +5,7 @@ echo $DATABASE
 echo $DEV
 echo $PROD 
 echo $STAGE
-cat <<EOF > Delivery_and_Deployment_Java_app/kubernetes/deployment_prod.yml
+cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/kubernetes/deployment_prod.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-prod
-          image: weslleyf/crud-java-login:v0.0.1
+          image: vinigim/crud-java-login:v0.0.1
           env:
             - name: USER
               valueFrom:
@@ -64,7 +64,7 @@ spec:
   selector:
     app: pod-javadb-prod
 EOF
-cat <<EOF > Delivery_and_Deployment_Java_app/kubernetes/deployment_stage.yml
+cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/kubernetes/deployment_stage.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -87,7 +87,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-stage
-          image: weslleyf/crud-java-login:v0.0.1
+          image: vinigim/crud-java-login:v0.0.1
           env:
             - name: USER
               valueFrom:
@@ -123,7 +123,7 @@ spec:
   selector:
     app: pod-javadb-stage
 EOF
-cat <<EOF > Delivery_and_Deployment_Java_app/kubernetes/deployment_dev.yml
+cat <<EOF > Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/kubernetes/deployment_dev.yml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -146,7 +146,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb-dev
-          image: weslleyf/crud-java-login:v0.0.1
+          image: vinigim/crud-java-login:v0.0.1
           env:
             - name: USER
               valueFrom:

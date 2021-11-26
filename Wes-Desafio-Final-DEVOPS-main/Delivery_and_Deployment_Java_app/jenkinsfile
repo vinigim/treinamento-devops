@@ -19,47 +19,47 @@ pipeline {
     stages {
         stage('Clone repo') {
             steps {
-                git url: 'https://github.com/weslleyfs/Wes-Desafio-Final-DEVOPS.git', branch: 'main'
+                git url: 'https://github.com/vinigim/treinamento-devops', branch: 'main'
             }
         }
         stage('Clone repositorio Java App') {
             steps {
-                sh "rm -rf Delivery_and_Deployment_Java_app/spring-web-youtube && Delivery_and_Deployment_Java_app/clone_repo_java_app.sh"
+                sh "rm -rf Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/spring-web-youtube && Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/clone_repo_java_app.sh"
             }
         }
         stage('Build Java App') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/build_jar.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/build_jar.sh"
             }
         }
         stage('Teste Java App') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/teste_jar.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/teste_jar.sh"
             }
         }
         stage('Build imagem Docker') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/build_docker.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/build_docker.sh"
             }
         }
         stage('Upload imagem DockerHub') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/push_docker_hub.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/push_docker_hub.sh"
             }
         }
         stage('Create files for deployment Kubernetes Java APP') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/create_deployment.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/create_deployment.sh"
             }
         }
         stage('Deployment Kubernetes Java APP') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/deploy.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/deploy.sh"
             }
         }
         stage('Validação Java APP K8s') {
             steps {
-                sh "Delivery_and_Deployment_Java_app/valida_app_java_k8s.sh"
+                sh "Wes-Desafio-Final-DEVOPS-main/Delivery_and_Deployment_Java_app/valida_app_java_k8s.sh"
             }
         }
                 
