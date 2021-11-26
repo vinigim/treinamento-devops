@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configmap-dev
+data:
+  USER: $USER
+  PASSWORD: $PASSWORD
+  DATABASE_URL: mysql://$DEV:3306/$DATABASE?useTimezone=true&serverTimezone=UTC
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-deployment-dev
+spec:
+  template:
+    metadata:
+      name: pod-javadb-dev
+      labels:
+        app: pod-javadb-dev
+    spec:
+      containers:
+        - name: container-pod-javadb-dev
+          image: vinigim/crud-java-login:v0.0.1
+          env:
+            - name: USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-dev
+                  key: USER
+            - name: PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-dev
+                  key: PASSWORD
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap-dev
+                  key: DATABASE_URL
+          ports:
+            - containerPort: 8080
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-javadb-dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-pod-javadb-dev
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30000 # 30000 ~ 32767
+  selector:
+    app: pod-javadb-dev
