@@ -26,6 +26,9 @@
     DATABASE: "{{ lookup('env', 'DATABASE') }}"
     USER: "{{ lookup('env', 'USER') }}"
 
+  - name: "Aguarda finalizar o lock"
+      shell: "sleep 10"
+
   tasks:  
     - name: "Roda: sudo apt update"
       become: yes
@@ -35,7 +38,7 @@
         cache_valid_time: 86400 #Um dia
     
     - name: "Aguarda finalizar o update"
-      shell: "sleep 20"
+      shell: "sleep 30"
 
     - name: "Instala pacotes em lote"
       apt:
