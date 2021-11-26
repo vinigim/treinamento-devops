@@ -35,7 +35,7 @@
         cache_valid_time: 86400 #Um dia
     
     - name: "Aguarda finalizar o update"
-      shell: "sleep 15"
+      shell: "sleep 20"
 
     - name: "Instala pacotes em lote"
       apt:
